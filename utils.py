@@ -14,10 +14,6 @@ def open_image(full_image_name):
     return cv2.imread(full_image_name, cv2.IMREAD_GRAYSCALE)  # grey scale
 
 
-def convert_to_array(img):
-    return np.array(img, ndmin=3)
-
-
 def resize(img, n):
     return cv2.resize(img, (n, n))
 
@@ -38,4 +34,7 @@ def resize_image_to_nxn_square(img, n):
 
 
 def reshape_to_on_dim_vector(array):
-    return np.reshape(array, (array.shape[0], IMG_SIZE * IMG_SIZE))
+    return np.reshape(np.reshape(array, (IMG_SIZE * IMG_SIZE)), (1, -1))
+
+def convert_to_array(img):
+    return np.array(img, ndmin=3)
