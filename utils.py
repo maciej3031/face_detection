@@ -3,8 +3,6 @@ import os
 import cv2
 import numpy as np
 
-from settings import IMG_SIZE
-
 
 def jj(*args):
     return os.path.join(*args)
@@ -33,8 +31,8 @@ def resize_image_to_nxn_square(img, n):
     return resized_img
 
 
-def reshape_to_on_dim_vector(array):
-    return np.reshape(np.reshape(array, (IMG_SIZE * IMG_SIZE)), (1, -1))
+def reshape_to_on_dim_vector(array, img_size):
+    return np.reshape(np.reshape(array, (img_size * img_size)), (1, -1))
 
 def convert_to_array(img):
     return np.array(img, ndmin=3)
