@@ -118,3 +118,14 @@ class Canny(object):
         for i, j in deltas:
             if self.canny_edges[row + i][col + j] == 1:
                 self.canny_edges[row][col] = 1
+
+    def convolve(self, array, filter_array, result_array):
+        offset = filter_array.shape[0] // 2
+        for row in range(self.height):
+            for col in range(self.width):
+                if (self.height - 2 * offset >= row >= offset) and (self.width - 2 * offset >= col >= offset):
+                    new_value = 0
+                    for f_row in range(filter_array.shape[0]):
+                        for f_col in range(filter_array.shape[1]):
+                            new_value += array[row - offset + f_row][col - offset + f_col] * filter_array[f_row][f_col]
+                    result_array[row - offset, col - offset] = new_value

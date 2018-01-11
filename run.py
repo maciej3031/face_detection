@@ -55,3 +55,4 @@ if __name__ == '__main__':
 
     # print("\n")
     # print("Człowiek" if prediction[0] == 1 else "Rzecz")
+    # detect_multi_scale opencv
