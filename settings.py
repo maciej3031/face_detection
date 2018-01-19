@@ -1,1 +1,0 @@
-WINDOW_SIZE = 100
